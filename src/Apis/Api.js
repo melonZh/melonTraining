@@ -13,6 +13,15 @@ if (process.env.NODE_ENV !== 'production') {
 
 export const BASE_API_URL = host + BASE_SYSTEM_URL
 
-export const USER_API = {
-  login: BASE_API_URL + '/login',
+
+const Api = {
+  user: {
+    login: proHost+ '/hm-rent-user' + '/login',
+  },
+  student: {
+    list: BASE_API_URL + '/student/list',
+    student: BASE_API_URL + '/student'
+  }
 }
+
+export default Api

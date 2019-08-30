@@ -1,11 +1,10 @@
-import { handleActions } from 'redux-actions';
+import { handleActions } from 'Utils/redux-actions';
 
 
 import {
-  USER_LOGIN_REQUEST,
-  USER_LOGIN_SUCCESS,
-  USER_LOGIN_FAILURE,
-} from 'ActionTypes/user.js'
+  LOGIN,
+  LOGOUT,
+} from 'Actions/user.js'
 
 const initialState = {
   islogedIn: false,
@@ -16,16 +15,12 @@ const initialState = {
 
 
 const user = handleActions({
-  [USER_LOGIN_SUCCESS]: (state, action) => ({
-    ...state,
-    userInfo: action.payload,
-    islogedIn: true,
-  }),
-  [USER_LOGIN_FAILURE]: (state, action) => ({
-    ...state,
-    userInfo: null,
-    errorMessage: action.payload,
-  }),
+  [LOGIN]: (state, action) => {
+    const { payload: { data={}, request={} } } = action
+    
+    return state
+  },
+  [LOGOUT]: (state, action) => (initialState),
 }, initialState)
 
 export default user

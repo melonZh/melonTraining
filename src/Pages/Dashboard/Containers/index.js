@@ -2,36 +2,68 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { Spin, Card, Input, Button, Checkbox, Icon, Tooltip } from 'antd';
+import { 
+  Layout
+} from 'antd'
 
-import { doUserLogin } from 'Actions/user.js';
 
+import {
+  prop,
+  flow,
+  find,
+  first,
+  isEmpty,
+} from 'lodash/fp'
 // style
 
 import Style from './index.less'
 
-// import LoginForm from '../Components/LoginForm';
+// 头部
+import HeaderWrapper from '../Components/Header'
 
-const List = (props) => {
+// 侧边栏
+
+import SliderWrapper from '../Components/Slider'
+
+// 内容
+
+import ContentWrapper from '../Components/Content'
+
+// 尾部
+
+import FooterWrapper from '../Components/Footer'
+
+
+
+
+
+const Dashboard = (props) => {
+ 
+  const { history, location } = props
+
+ 
+  
   // 使用 
-  // useEffect(() => {
-  //   const user = localStorage.getItem('user')
-  //   const { history } = props
-  //   console.log('user', user)
-  //   if (!user) {
-  //     history.push('/login')
-  //     return
-  //   }
-  // })
-  const doLogin = (value) => {
-    const { doUserLogin } = props
-    console.log('value', value, props)
-    doUserLogin(value)
-  }
+  useEffect(() => {
+    const user = localStorage.getItem('user')
+    if (!user) {
+      history.push('/login')
+      return
+    }
+  })
+
+ 
   return (
-    <div >
-      我是首页
-    </div>
+    <Layout style={{ height: '100vh' }}>
+      <SliderWrapper
+        location={location}
+      />
+      <Layout>
+        <HeaderWrapper />
+        <ContentWrapper />
+        <FooterWrapper />
+      </Layout>
+    </Layout>
   )
 }
 
@@ -42,13 +74,13 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  doUserLogin
+  
 }
 
-const ListPage = connect(
+const DashboardPage = connect(
   mapStateToProps,
   mapDispatchToProps
-)(List)
+)(Dashboard)
 
 
-export default ListPage
+export default DashboardPage

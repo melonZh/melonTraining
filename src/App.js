@@ -46,8 +46,7 @@ class App extends React.Component {
           <Switch>
             <Route path={"/login"} component={Login} />
             <Route path={"/"} component={Dashboard} />
-            
-            {/* <Redirect to={"/"} /> */}
+            <Redirect to={"/"} />
           </Switch>
         </Router>
       </Provider>

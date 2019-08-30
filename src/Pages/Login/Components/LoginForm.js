@@ -61,7 +61,7 @@ const NormalLoginForm = (props) => {
 
 const LoginForm = Form.create({ name: 'normal_login' })(NormalLoginForm);
 
-LoginForm.propTypes = {
+NormalLoginForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 }
 
